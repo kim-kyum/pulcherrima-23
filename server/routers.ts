@@ -6,6 +6,9 @@ import { systemRouter } from "./_core/systemRouter";
 import { adminProcedure, ownerProcedure, publicProcedure, router } from "./_core/trpc";
 import { getSiteContent, listSiteContents, upsertSiteContent } from "./db";
 import { createAdminAccount, listAdminAccounts, updateAdminAccount } from "./adminAccounts";
+import { decodeArchiveImageUpload } from "./adminMedia";
+import { storagePut } from "./storage";
+import { validateEditableContent } from "../shared/contentValidation";
 import { TRPCError } from "@trpc/server";
 
 export const appRouter = router({
@@ -15,7 +18,25 @@ export const appRouter = router({
     me: publicProcedure.query(({ ctx }) => ({ authenticated: ctx.user?.role === "admin", role: ctx.adminSession?.role ?? null, username: ctx.adminSession?.username ?? null })),
     content: router({
       list: adminProcedure.query(() => listSiteContents()),
-      update: adminProcedure.input(z.object({ contentKey: z.enum(["home", "archive", "videos", "recruiting"]), contentValue: z.string().max(100000) })).mutation(({ input }) => upsertSiteContent(input.contentKey, input.contentValue)),
+      update: adminProcedure.input(z.object({ contentKey: z.enum(["home", "archive", "videos", "recruiting"]), contentValue: z.string().max(100000) })).mutation(({ input }) => {
+        try {
+          const validated = validateEditableContent(input.contentKey, input.contentValue);
+          return upsertSiteContent(input.contentKey, JSON.stringify(validated, null, 2));
+        } catch (error) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: error instanceof Error ? error.message : "콘텐츠 형식을 확인하세요." });
+        }
+      }),
+    }),
+    media: router({
+      uploadArchiveImage: adminProcedure.input(z.object({ fileName: z.string().min(1).max(200), contentType: z.string().max(64), base64: z.string().max(12_000_000) })).mutation(async ({ input }) => {
+        try {
+          const image = decodeArchiveImageUpload(input.contentType, input.base64);
+          const timestamp = new Date().toISOString().slice(0, 10);
+          return await storagePut(`pulcherrima/archive/${timestamp}-${crypto.randomUUID()}.${image.extension}`, image.data, image.contentType);
+        } catch (error) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: error instanceof Error ? error.message : "사진을 업로드하지 못했습니다." });
+        }
+      }),
     }),
     accounts: router({
       list: ownerProcedure.query(() => listAdminAccounts()),

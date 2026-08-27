@@ -1106,8 +1106,8 @@ body { background: #000; color: #fff; }
 /* One persistent control advances through the three screen-sized hero sections. */
 .hero-screen-track { position: relative; }
 .hero-screen-controls { justify-content: flex-start; }.hero-screen-image img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(.86) contrast(1.04); }.hero-screen-media { min-height: clamp(19rem, 42vh, 31rem); }
-.hero-scroll-button { position: fixed; right: clamp(1.25rem, 4vw, 4rem); bottom: clamp(1.25rem, 4vw, 3.5rem); z-index: 60; width: 3.2rem; height: 3.2rem; background: #000; box-shadow: 0 0 0 1px rgba(255,255,255,.22); }
-@media (max-width: 800px) { .hero-screen-media { min-height: 14rem; }.hero-scroll-button { right: 1.1rem; bottom: 1.1rem; width: 2.8rem; height: 2.8rem; } }
+.hero-scroll-button { position: fixed; right: clamp(1.25rem, 4vw, 4rem); bottom: max(2.25rem, calc(env(safe-area-inset-bottom) + 1.25rem)); z-index: 60; width: 3.2rem; height: 3.2rem; background: #000; box-shadow: 0 0 0 1px rgba(255,255,255,.22); touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+@media (max-width: 800px) { .hero-screen-media { min-height: 14rem; }.hero-scroll-button { right: 1.1rem; bottom: max(3.75rem, calc(env(safe-area-inset-bottom) + 1.4rem)); width: 2.8rem; height: 2.8rem; } }
 
 /* Reliable mobile menu state: the header owns the open class and the panel stays above page content. */
 @media (max-width: 800px) {
@@ -1334,7 +1334,7 @@ body { background: #000; color: #fff; }
   .hero-screen { min-height: clamp(43rem, 92svh, 56rem); padding-top: 5.5rem; padding-bottom: 3.5rem; }
   .hero-screen-layout.has-media { gap: 2.25rem; }
   .hero-screen-media { min-height: clamp(19rem, 40vw, 27rem); }
-  .hero-scroll-button { right: 2rem; bottom: 1.75rem; }
+  .hero-scroll-button { right: 2rem; bottom: max(4.5rem, calc(env(safe-area-inset-bottom) + 2rem)); }
 }
 @media (min-width: 801px) and (max-width: 1024px) {
   .hero-screen { min-height: clamp(43rem, 94svh, 58rem); }
@@ -1344,5 +1344,18 @@ body { background: #000; color: #fff; }
   .hero-screen { min-height: auto; padding-top: 5.75rem; padding-bottom: 3.25rem; }
   .hero-screen-layout.has-media { gap: 1.5rem; }
   .hero-screen-media { min-height: 0; }
-  .hero-scroll-button { right: 1.05rem; bottom: 1rem; }
+  .hero-scroll-button { right: 1.05rem; bottom: max(3.75rem, calc(env(safe-area-inset-bottom) + 1.3rem)); }
 }
+
+/* Archive upload: a card accepts a real photo without exposing raw storage steps. */
+.image-upload-field { position: relative; padding: .85rem; border: 1px dashed rgba(242,195,0,.72); background: rgba(242,195,0,.045); }
+.image-upload-field input[type="file"] { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; opacity: 0; cursor: pointer; }
+.image-upload-field span { display: inline-flex; align-items: center; gap: .45rem; color: var(--telescope-yellow); font-size: .78rem; line-height: 1.4; }
+.image-upload-field:focus-within { outline: 2px solid var(--telescope-yellow); outline-offset: 2px; }
+.archive-image-preview { position: relative; overflow: hidden; aspect-ratio: 16 / 9; border: 1px solid rgba(255,255,255,.28); background: #050505; }
+.archive-image-preview img { display: block; width: 100%; height: 100%; object-fit: cover; filter: grayscale(.12) saturate(.9); }
+.archive-image-preview span { position: absolute; right: .65rem; bottom: .6rem; padding: .25rem .45rem; color: #fff; background: rgba(0,0,0,.76); font-size: .68rem; }
+.admin-success { display: flex; align-items: center; gap: .45rem; margin-top: 1rem; padding: .75rem .85rem; color: #080808; background: var(--telescope-yellow); font-size: .8rem; line-height: 1.45; }
+.admin-error { padding: .7rem 0; color: var(--telescope-yellow); line-height: 1.5; }
+.archive-image-placeholder { display: grid; width: 100%; height: 100%; min-height: 11rem; place-content: center; gap: .55rem; color: rgba(255,255,255,.6); background: #090909; font-size: .76rem; text-align: center; }
+@media (max-width: 600px) { .image-upload-field span { font-size: .72rem; } }

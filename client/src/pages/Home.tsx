@@ -89,7 +89,7 @@ export default function Home() {
                 <div className="hero-screen-edge"><span>풀체리마 공식 사이트</span></div>
               </article>
             ))}
-            {activeScreen < heroScreens.length - 1 && <button className="hero-scroll-button" type="button" onClick={goToNextScreen} aria-label="다음 화면으로 이동"><ArrowDown size={18} /></button>}
+            {activeScreen < heroScreens.length - 1 && <button className="hero-scroll-button" type="button" onClick={goToNextScreen} onPointerUp={(event) => { if (event.pointerType === "touch") { event.preventDefault(); goToNextScreen(); } }} onTouchEnd={(event) => { event.preventDefault(); goToNextScreen(); }} aria-label="다음 화면으로 이동"><ArrowDown size={18} /></button>}
           </div>
         </section>
       </main>
