@@ -1268,3 +1268,10 @@ body { background: #000; color: #fff; }
 }
 
 .content-fallback-note { margin: 0 0 1rem; color: var(--telescope-yellow); font-family: var(--number); font-size: .7rem; letter-spacing: .04em; }
+
+/* Compact the desktop chapter rhythm without removing any hero content. */
+@media (min-width: 801px) {
+  .hero-screen { min-height: clamp(35rem, 84svh, 46rem); padding-top: 2.25rem; padding-bottom: 1.5rem; }
+  .hero-screen-media { min-height: clamp(17rem, 36vh, 26rem); }
+  .hero-screen-controls { margin-top: clamp(1rem, 2vw, 2rem); }
+}
