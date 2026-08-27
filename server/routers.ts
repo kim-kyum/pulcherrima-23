@@ -14,7 +14,7 @@ export const appRouter = router({
     me: publicProcedure.query(({ ctx }) => ({ authenticated: ctx.user?.role === "admin" })),
     content: router({
       list: adminProcedure.query(() => listSiteContents()),
-      update: adminProcedure.input(z.object({ contentKey: z.enum(["archive", "recruiting"]), contentValue: z.string().max(100000) })).mutation(({ input }) => upsertSiteContent(input.contentKey, input.contentValue)),
+      update: adminProcedure.input(z.object({ contentKey: z.enum(["home", "archive", "videos", "recruiting"]), contentValue: z.string().max(100000) })).mutation(({ input }) => upsertSiteContent(input.contentKey, input.contentValue)),
     }),
     login: publicProcedure.input(z.object({ username: z.string().min(1), password: z.string().min(1) })).mutation(({ input, ctx }) => {
       if (!areAdminCredentialsValid(input.username, input.password)) {
@@ -32,7 +32,7 @@ export const appRouter = router({
     }),
   }),
   content: router({
-    get: publicProcedure.input(z.object({ contentKey: z.enum(["archive", "recruiting"]) })).query(({ input }) => getSiteContent(input.contentKey)),
+    get: publicProcedure.input(z.object({ contentKey: z.enum(["home", "archive", "videos", "recruiting"]) })).query(({ input }) => getSiteContent(input.contentKey)),
   }),
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
