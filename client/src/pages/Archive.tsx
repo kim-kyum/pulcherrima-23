@@ -3,10 +3,11 @@
  * The current semester is page one. Older semesters stay available through simple page buttons,
  * so new observation records can be appended without changing the page structure.
  */
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ArrowUpRight, ChevronRight } from "lucide-react";
 import { Link } from "wouter";
 import SiteHeader from "@/components/SiteHeader";
+import { trpc } from "@/lib/trpc";
 
 const entries = [
   { no: "01", date: "2026. 08", type: "관측 기록", title: "여름 은하수 지도", excerpt: "학교 옥상에서 보이는 별을 하나씩 이어 다음 관측을 위한 지도로 남긴 기록입니다.", image: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=1100&q=88" },
@@ -22,7 +23,9 @@ const semesterPages = [
 
 export default function Archive() {
   const [page, setPage] = useState(0);
-  const current = semesterPages[page];
+  const managedContent = trpc.content.get.useQuery({ contentKey: "archive" });
+  const managed = useMemo(() => { try { return managedContent.data ? JSON.parse(managedContent.data.contentValue) as { intro?: string; entries?: typeof entries } : {}; } catch { return {}; } }, [managedContent.data]);
+  const current = { ...semesterPages[page], records: page === 0 && managed.entries?.length ? managed.entries : semesterPages[page].records };
 
   return (
     <div className="inner-page archive-page">
@@ -35,7 +38,7 @@ export default function Archive() {
               <p className="section-kicker">풀체리마 활동기록소</p>
               <h1>2천년 역사의 천문, <span>풀체리마도 함께하다</span></h1>
             </div>
-            <p className="page-intro-copy">관측이 끝난 뒤의 기록과 준비하는 동안의 질문, 함께 보낸 밤의 흔적을 남깁니다. 현재 학기 기록부터 지난 기록까지 차례로 확인할 수 있습니다.</p>
+            <p className="page-intro-copy">{managed.intro ?? "관측이 끝난 뒤의 기록과 준비하는 동안의 질문, 함께 보낸 밤의 흔적을 남깁니다. 현재 학기 기록부터 지난 기록까지 차례로 확인할 수 있습니다."}</p>
           </div>
         </section>
 

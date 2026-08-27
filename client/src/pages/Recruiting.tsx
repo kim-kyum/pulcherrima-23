@@ -3,32 +3,38 @@
  * Recruitment is intentionally separate from the official home and archive so the public
  * site can stay evergreen while a future application form can grow here.
  */
+import { useMemo } from "react";
 import { ArrowUpRight, Check, Mail, MoveLeft } from "lucide-react";
 import { Link } from "wouter";
 import SiteHeader from "@/components/SiteHeader";
+import { trpc } from "@/lib/trpc";
 
 export default function Recruiting() {
+  const managedContent = trpc.content.get.useQuery({ contentKey: "recruiting" });
+  const managed = useMemo(() => { try { return managedContent.data ? JSON.parse(managedContent.data.contentValue) as Record<string, string> : {}; } catch { return {}; } }, [managedContent.data]);
+  const generation = managed.generation ?? "23기";
+  const year = managed.year ?? "2027";
   return (
     <div className="inner-page recruiting-page">
       <SiteHeader />
       <main className="inner-main">
         <section className="page-intro recruiting-intro">
-          <div className="page-intro-meta"><span>GBS / 풀체리마</span><span>23기 모집 / 2027</span></div>
+          <div className="page-intro-meta"><span>GBS / 풀체리마</span><span>{generation} 모집 / {year}</span></div>
           <div className="recruiting-title-row">
             <div>
-              <p className="section-kicker">풀체리마 23기 모집</p>
-              <h1>다음 관측을 <span>같이 준비합니다.</span></h1>
+              <p className="section-kicker">풀체리마 {generation} 모집</p>
+              <h1>{managed.title ?? "다음 관측을 같이 준비합니다."}</h1>
             </div>
             <p className="page-intro-copy">지원에 필요한 내용을 따로 정리합니다. 모집 일정과 방법은 이곳과 GBS 학교 공지에서 확인할 수 있습니다.</p>
           </div>
         </section>
 
         <section className="recruiting-notice" aria-labelledby="notice-title">
-          <div className="notice-label"><span>모집 안내</span><span>23기 / 2027</span></div>
+          <div className="notice-label"><span>모집 안내</span><span>{generation} / {year}</span></div>
           <div className="notice-body">
-            <h2 id="notice-title">지금은 다음 공지를 <span>기다리는 시간입니다.</span></h2>
+            <h2 id="notice-title">{managed.noticeTitle ?? "지금은 다음 공지를 기다리는 시간입니다."}</h2>
             <div className="notice-copy">
-              <p>지원 일정과 방법은 확정 후 GBS 학교 공지와 풀체리마 공식 채널을 통해 안내합니다. 궁금한 점은 메일로 남겨주세요.</p>
+              <p>{managed.noticeCopy ?? "지원 일정과 방법은 확정 후 GBS 학교 공지와 풀체리마 공식 채널을 통해 안내합니다. 궁금한 점은 메일로 남겨주세요."}</p>
               <a className="button button-yellow" href="mailto:recruit@pulcherrima.site?subject=Pulcherrima%2023%EA%B8%B0%20지원%20문의">지원 문의 보내기 <Mail size={17} /></a>
             </div>
           </div>
