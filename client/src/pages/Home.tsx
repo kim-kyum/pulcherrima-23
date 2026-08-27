@@ -108,7 +108,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="site-footer official-footer"><div><p>GBS ASTRONOMY CLUB · PULCHERRIMA</p><small>공식 사이트 · 활동기록소 · 영상 · 23기 모집</small></div><div className="footer-links"><a href="mailto:recruit@pulcherrima.site">연락하기 <ArrowUpRight size={14} /></a><a href="https://www.youtube.com/channel/UCplIsa1QW2a_eQcvtJAymXw" target="_blank" rel="noreferrer">YouTube <ExternalLink size={13} /></a></div></footer>
+      <footer className="site-footer official-footer"><div><p>GBS ASTRONOMY CLUB · PULCHERRIMA</p><small>공식 사이트 · 활동기록소 · 영상 · 23기 모집</small></div><div className="footer-links"><a href="mailto:recruit@pulcherrima.site" aria-label="문의 메일 열기">문의하기 <ArrowUpRight size={14} /></a><a href="https://www.youtube.com/channel/UCplIsa1QW2a_eQcvtJAymXw" target="_blank" rel="noreferrer">YouTube <ExternalLink size={13} /></a></div></footer>
     </div>
   );
 }

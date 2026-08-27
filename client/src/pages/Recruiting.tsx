@@ -66,7 +66,7 @@ export default function Recruiting() {
 
         <div className="inner-backlink"><Link href="/"><MoveLeft size={16} /> 공식 사이트로 돌아가기</Link><Link href="/archive">활동기록소 보기 <ArrowUpRight size={15} /></Link></div>
       </main>
-      <footer className="site-footer inner-footer"><p>GBS ASTRONOMY CLUB · PULCHERRIMA</p><Link href={`mailto:${contactEmail}`}>{contactEmail} <ArrowUpRight size={14} /></Link></footer>
+      <footer className="site-footer inner-footer"><p>GBS ASTRONOMY CLUB · PULCHERRIMA</p><Link href={`mailto:${contactEmail}`} aria-label="문의 메일 열기">문의하기 <ArrowUpRight size={14} /></Link></footer>
     </div>
   );
 }
