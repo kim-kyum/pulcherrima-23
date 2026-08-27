@@ -1217,3 +1217,54 @@ body { background: #000; color: #fff; }
 .admin-login-card form { display: grid; gap: 1rem; }.admin-login-card label { display: grid; gap: .45rem; color: rgba(255,255,255,.72); font-size: .8rem; }.admin-login-card input { min-height: 3rem; padding: .7rem .8rem; color: #fff; border: 1px solid rgba(255,255,255,.35); background: #080808; }.admin-login-card .button { width: 100%; margin-top: .6rem; color: #000; background: var(--telescope-yellow); }.admin-login-card > a { display: inline-block; margin-top: 1.5rem; color: rgba(255,255,255,.6); font-family: var(--serif); }.admin-error { margin-top: .8rem; color: var(--telescope-yellow); font-size: .8rem; }
 .admin-topbar { display: flex; align-items: end; justify-content: space-between; gap: 2rem; padding: 7rem var(--site-padding) 3rem; border-bottom: 1px solid rgba(255,255,255,.25); }.admin-top-actions { display: flex; gap: 1rem; }.admin-top-actions a, .admin-top-actions button { display: inline-flex; align-items: center; gap: .35rem; padding: .65rem .8rem; color: #fff; border: 1px solid rgba(255,255,255,.35); background: transparent; text-decoration: none; font-family: var(--serif); }.admin-top-actions button { cursor: pointer; }.admin-editor { display: grid; grid-template-columns: 15rem 1fr; gap: clamp(2rem, 6vw, 6rem); max-width: 80rem; margin: 0 auto; padding: 3rem var(--site-padding) 6rem; }.admin-editor aside { display: grid; align-content: start; gap: .35rem; }.admin-editor aside button { padding: .9rem 1rem; color: rgba(255,255,255,.62); border: 1px solid transparent; background: transparent; text-align: left; font-family: var(--serif); font-size: 1.1rem; cursor: pointer; }.admin-editor aside button.is-active, .admin-editor aside button:hover { color: #000; background: var(--telescope-yellow); }.admin-editor-main { min-width: 0; }.admin-editor-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; }.admin-editor-heading h2 { margin: 0; font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.8rem); font-weight: 500; }.admin-save-button { display: inline-flex; align-items: center; gap: .35rem; padding: .75rem 1rem; color: #000; border: 1px solid var(--telescope-yellow); background: var(--telescope-yellow); cursor: pointer; }.admin-help { color: rgba(255,255,255,.58); font-size: .84rem; line-height: 1.7; }.admin-editor textarea { width: 100%; min-height: 28rem; padding: 1rem; color: #fff; border: 1px solid rgba(255,255,255,.35); background: #080808; font: .88rem/1.7 var(--mono); resize: vertical; }
 @media (max-width: 700px) { .admin-topbar { display: block; padding-top: 6rem; }.admin-top-actions { margin-top: 1.5rem; }.admin-editor { display: block; padding-top: 2rem; }.admin-editor aside { display: flex; overflow-x: auto; margin-bottom: 2rem; }.admin-editor aside button { white-space: nowrap; }.admin-editor-heading { align-items: start; }.admin-editor-heading h2 { font-size: 2rem; }.admin-login-card { box-shadow: 5px 5px 0 var(--telescope-yellow); } }
+
+/* The opening statement gets a deliberate pause between its title and explanation. */
+.hero-screen:first-child .hero-screen-copy h1 { margin-bottom: clamp(2rem, 4.8vw, 5.5rem) !important; }
+.hero-screen:first-child .hero-intro-description { margin-top: 0 !important; }
+@media (max-width: 800px) {
+  .hero-screen:first-child .hero-screen-copy h1 { margin-bottom: clamp(2.4rem, 12vw, 4.4rem) !important; }
+}
+
+/* Keep public titles on one line on narrow screens by scaling them before allowing overflow. */
+.hero-screen:first-child .hero-screen-copy h1 { margin-bottom: clamp(3.5rem, 6vw, 6rem) !important; }
+@media (max-width: 800px) {
+  .hero-screen-copy h1,
+  .page-intro h1,
+  .notice-body h2,
+  .fit-grid h2,
+  .archive-empty-state h2,
+  .archive-entry-body h2 {
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+    max-width: none !important;
+    font-size: clamp(1.08rem, 5.2vw, 3.05rem) !important;
+    letter-spacing: -0.045em;
+  }
+  .hero-screen:first-child .hero-screen-copy h1 { margin-bottom: clamp(3.5rem, 10vw, 5rem) !important; }
+}
+
+@media (max-width: 800px) {
+  .archive-intro h1,
+  .notice-body h2 {
+    font-size: clamp(.74rem, 3.9vw, 2.85rem) !important;
+    white-space: nowrap !important;
+    letter-spacing: -0.05em;
+  }
+}
+
+/* Balanced pause for the opening title after the tighter spacing review. */
+.hero-screen:first-child .hero-screen-copy h1 { margin-bottom: clamp(2.35rem, 3.5vw, 4.2rem) !important; }
+@media (max-width: 800px) {
+  .hero-screen:first-child .hero-screen-copy h1 { margin-bottom: clamp(2rem, 7vw, 3rem) !important; }
+}
+
+/* Keep the selected player fully inside the mobile reading column. */
+@media (max-width: 800px) {
+  .selected-video-section { width: auto; max-width: none; margin-left: 1.35rem; margin-right: 1.35rem; padding-top: 1.15rem; }
+  .selected-video-player { width: 100%; max-width: 100%; aspect-ratio: 16 / 9; min-height: 0; }
+  .selected-video-caption { padding-top: 1rem; padding-right: .15rem; }
+  .selected-video-caption h2 { max-width: 100%; overflow-wrap: anywhere; }
+}
+
+.content-fallback-note { margin: 0 0 1rem; color: var(--telescope-yellow); font-family: var(--number); font-size: .7rem; letter-spacing: .04em; }

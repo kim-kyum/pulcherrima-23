@@ -10,7 +10,7 @@ import SiteHeader from "@/components/SiteHeader";
 import { trpc } from "@/lib/trpc";
 
 export default function Recruiting() {
-  const managedContent = trpc.content.get.useQuery({ contentKey: "recruiting" });
+  const managedContent = trpc.content.get.useQuery({ contentKey: "recruiting" }, { retry: false });
   const managed = useMemo(() => { try { return managedContent.data ? JSON.parse(managedContent.data.contentValue) as Record<string, string> : {}; } catch { return {}; } }, [managedContent.data]);
   const generation = managed.generation ?? "23기";
   const year = managed.year ?? "2027";
@@ -21,6 +21,7 @@ export default function Recruiting() {
       <SiteHeader />
       <main className="inner-main">
         <section className="page-intro recruiting-intro">
+          {managedContent.isError && <p className="content-fallback-note" role="status">기본 모집 안내를 표시 중입니다.</p>}
           <div className="page-intro-meta"><span>GBS / 풀체리마</span><span>{generation} 모집 / {year}</span></div>
           <div className="recruiting-title-row">
             <div>

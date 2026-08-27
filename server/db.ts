@@ -89,6 +89,28 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
+const DEFAULT_SITE_CONTENT: Record<string, string> = {
+  archive: JSON.stringify({ intro: "관측이 끝난 뒤의 기록과 준비하는 동안의 질문을 남깁니다.", entries: [] }),
+  recruiting: JSON.stringify({
+    generation: "23기",
+    year: "2027",
+    title: "다음 관측을 같이 준비합니다.",
+    noticeTitle: "지금은 다음 공지를 기다리는 시간입니다.",
+    noticeCopy: "지원 일정과 방법은 확정 후 GBS 학교 공지와 풀체리마 공식 채널을 통해 안내합니다.",
+    contactEmail: "recruit@pulcherrima.site",
+    applyUrl: "",
+  }),
+};
+
+export function getDefaultSiteContent(contentKey: string) {
+  return {
+    id: 0,
+    contentKey,
+    contentValue: DEFAULT_SITE_CONTENT[contentKey] ?? "{}",
+    updatedAt: new Date(0),
+  };
+}
+
 export async function listSiteContents() {
   const db = await getDb();
   if (!db) return [];
@@ -97,9 +119,9 @@ export async function listSiteContents() {
 
 export async function getSiteContent(contentKey: string) {
   const db = await getDb();
-  if (!db) return undefined;
+  if (!db) return getDefaultSiteContent(contentKey);
   const result = await db.select().from(siteContents).where(eq(siteContents.contentKey, contentKey)).limit(1);
-  return result[0];
+  return result[0] ?? getDefaultSiteContent(contentKey);
 }
 
 export async function upsertSiteContent(contentKey: string, contentValue: string) {
