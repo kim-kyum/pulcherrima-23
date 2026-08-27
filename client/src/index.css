@@ -1056,3 +1056,49 @@ body { background: #000; color: #fff; }
 @media (max-width: 800px) {
   .selected-video-section { margin: 0 1.1rem 3.5rem 2.2rem; }.selected-video-caption { display: block; }.selected-video-caption h2 { margin-bottom: .6rem; font-size: 1.5rem; }.selected-video-caption a { font-size: .8rem; }.official-video-player { margin-bottom: 0; }.video-external-link { font-size: .72rem; }.video-row-arrow { font-size: .68rem; }
 }
+
+/* Three consecutive hero screens. Add another object to heroScreens in Home.tsx to extend the story. */
+.official-hero { min-height: 0; padding: 0; border-bottom: 0; }
+.hero-screen-track { background: #000; scroll-snap-type: y proximity; }
+.hero-screen { position: relative; display: flex; flex-direction: column; justify-content: space-between; min-height: clamp(29rem, 76svh, 43rem); padding: 2.3rem clamp(2rem, 8vw, 8rem) 2.2rem; border-bottom: 1px solid rgba(255,255,255,.2); scroll-snap-align: start; }
+.hero-screen-meta, .hero-screen-edge { display: flex; justify-content: space-between; gap: 1rem; color: rgba(255,255,255,.54); font-family: var(--number); font-size: .7rem; font-variant-numeric: tabular-nums; letter-spacing: .03em; }
+.hero-screen-copy { max-width: 72rem; padding: 3rem 0 3.5rem; }
+.hero-screen-copy .section-kicker { margin-bottom: 1.1rem; }
+.hero-screen-copy h1 { max-width: 70rem; margin: 0; color: #fff; font-family: var(--display); font-size: clamp(3.8rem, 10vw, 9.5rem); font-weight: 800; line-height: .92; letter-spacing: -.09em; text-wrap: balance; }
+.hero-screen:nth-child(2) .hero-screen-copy h1 { max-width: 62rem; }
+.hero-screen:nth-child(3) .hero-screen-copy h1 { max-width: 52rem; }
+.hero-screen-actions { display: flex; align-items: center; gap: 1.4rem; padding: 2rem clamp(2rem, 8vw, 8rem) 3rem; background: #000; border-bottom: 1px solid rgba(255,255,255,.2); }
+.site-header { background: #000 !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+.site-header.is-scrolled { background: #000 !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+.site-header.is-hidden { opacity: 0; pointer-events: none; transform: translateY(-110%); }
+
+@media (max-width: 800px) {
+  .hero-screen { min-height: 30rem; padding: 1.5rem 1.35rem 1.4rem 2.2rem; }
+  .hero-screen-copy { padding: 2rem 0 2.5rem; }.hero-screen-copy .section-kicker { max-width: 12rem; line-height: 1.35; }.hero-screen-copy h1 { font-size: clamp(3.25rem, 15vw, 5.4rem); line-height: .94; letter-spacing: -.095em; }
+  .hero-screen-meta, .hero-screen-edge { font-size: .62rem; }.hero-screen-actions { gap: 1rem; padding: 1.25rem 1.35rem 2rem 2.2rem; }
+}
+
+/* The row action stays horizontal and readable on every width. */
+.video-row-arrow { display: inline-flex; align-items: center; justify-content: center; gap: .3rem; width: auto; min-width: 4.2rem; padding: .55rem .65rem; border: 1px solid var(--telescope-yellow); white-space: nowrap; line-height: 1; }
+.video-row:hover .video-row-arrow, .video-row:focus-visible .video-row-arrow, .video-row.is-selected .video-row-arrow { color: #000; background: var(--telescope-yellow); }
+@media (max-width: 800px) { .video-row-arrow { min-width: 3.8rem; padding: .48rem .45rem; font-size: .7rem; } }
+
+/* First hero screen pairs the requested line with the supplied 2023 recruitment film. */
+.hero-screen-layout { display: flex; align-items: center; justify-content: space-between; gap: clamp(2rem, 7vw, 8rem); width: 100%; }
+.hero-screen-layout.has-media .hero-screen-copy { flex: 1 1 54%; }.hero-screen-media { flex: 0 1 min(38vw, 32rem); overflow: hidden; aspect-ratio: 16 / 9; border: 1px solid rgba(255,255,255,.4); background: #050505; }.hero-screen-media iframe { display: block; width: 100%; height: 100%; border: 0; }
+.hero-screen-layout.has-media .hero-screen-copy h1 { max-width: 52rem; }
+.hero-screen:nth-child(n+2) .hero-screen-copy { padding-bottom: 1rem; }
+.hero-screen:nth-child(n+2) { min-height: clamp(23rem, 58svh, 34rem); }
+@media (max-width: 800px) {
+  .hero-screen-layout { display: block; }.hero-screen-layout.has-media .hero-screen-copy { padding-bottom: 1.4rem; }.hero-screen-media { width: 100%; max-width: 24rem; }.hero-screen:nth-child(n+2) { min-height: 24rem; }
+}
+
+/* Full-screen hero pagination without visible page numbers. */
+.hero-screen { min-height: calc(100svh - 82px); padding-top: 3rem; padding-bottom: 2.2rem; }
+.hero-screen-copy h1 { font-size: clamp(3.5rem, 8.6vw, 8rem); }
+.hero-screen-layout.has-media { align-items: center; }.hero-screen-layout.has-media .hero-screen-copy { flex-basis: 43%; }.hero-screen-media { flex-basis: min(48vw, 52rem); max-width: 52rem; }
+.hero-screen-controls { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }.hero-screen-cta { display: flex; align-items: center; flex-wrap: wrap; gap: 1.2rem; }.hero-scroll-button { display: grid; place-items: center; width: 2.8rem; height: 2.8rem; color: #fff; background: transparent; border: 1px solid rgba(255,255,255,.42); transition: color 180ms ease, background 180ms ease, transform 180ms ease; }.hero-scroll-button:hover, .hero-scroll-button:focus-visible { color: #000; background: var(--telescope-yellow); transform: translateY(3px); }
+.hero-screen-meta span:first-child, .hero-screen-edge span:last-child { display: none; }
+@media (max-width: 800px) {
+  .hero-screen { min-height: calc(100svh - 56px); padding-top: 1.6rem; padding-bottom: 1.4rem; }.hero-screen-copy h1 { font-size: clamp(3rem, 14vw, 5.2rem); }.hero-screen-layout.has-media .hero-screen-copy { padding-bottom: 1rem; }.hero-screen-media { width: 100%; max-width: none; }.hero-screen-cta { gap: .75rem; }.hero-screen-controls { align-items: flex-end; }.hero-screen-cta .text-link { font-size: .78rem; }.hero-scroll-button { width: 2.5rem; height: 2.5rem; }
+}

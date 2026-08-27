@@ -31,8 +31,8 @@ export default function Videos() {
         <section className="page-intro videos-intro">
           <div className="page-intro-meta"><span>GBS / 풀체리마</span><span>영상 기록 / 2020—</span></div>
           <div className="page-intro-grid">
-            <div><p className="section-kicker">풀체리마 유튜브</p><h1>영상으로<br /><span>먼저 만난다.</span></h1></div>
-            <p className="page-intro-copy">동아리 소개, 학술발표회, 활동 돌아보기를 담은 풀체리마 채널의 영상 기록이다. 목록에서 영상을 고르면 이 페이지에서 바로 재생한다.</p>
+            <div><p className="section-kicker">풀체리마 유튜브</p><h1>영상으로<br /><span>먼저 만나보세요.</span></h1></div>
+            <p className="page-intro-copy">동아리 소개, 학술발표회, 활동 돌아보기를 담은 풀체리마 채널의 영상 기록입니다. 목록에서 영상을 고르면 이 페이지에서 바로 재생할 수 있습니다.</p>
           </div>
         </section>
 
@@ -48,7 +48,7 @@ export default function Videos() {
               <span className="video-row-year">{video.year}</span>
               <span className="video-thumb"><img src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`} alt="" loading="lazy" /><span className="video-play"><Play size={15} fill="currentColor" /></span><small>{video.duration}</small></span>
               <span className="video-row-copy"><strong>{video.title}</strong><span>{video.featured ? "2023년 19기 모집 영상" : "풀체리마 영상 기록"}</span></span>
-              <span className="video-row-arrow" aria-hidden="true">재생</span>
+              <span className="video-row-arrow" aria-hidden="true"><Play size={13} fill="currentColor" /> 재생</span>
             </button>
           ))}
         </section>
