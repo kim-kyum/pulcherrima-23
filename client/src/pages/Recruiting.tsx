@@ -36,7 +36,7 @@ export default function Recruiting() {
         <section className="recruiting-flow"><div className="section-topline"><span>02</span><span>진행 순서</span></div><div className="flow-row">{steps.map((step, index) => <div key={`${step.title}-${index}`}><strong>{String(index + 1).padStart(2, "0")}</strong><h3>{step.title}</h3><p>{step.copy}</p></div>)}</div></section>
         <div className="inner-backlink"><Link href="/"><MoveLeft size={16} /> 공식 사이트로 돌아가기</Link><Link href="/archive">활동기록소 보기 <ArrowUpRight size={15} /></Link></div>
       </main>
-      <footer className="site-footer inner-footer"><p>GBS ASTRONOMY CLUB · PULCHERRIMA</p><Link href={`mailto:${contactEmail}`} aria-label="문의 메일 열기">문의하기 <ArrowUpRight size={14} /></Link></footer>
+      <footer className="site-footer inner-footer"><p>GBS ASTRONOMY CLUB · PULCHERRIMA</p><a href={`mailto:${contactEmail}`} aria-label="문의 메일 열기">문의하기 <ArrowUpRight size={14} /></a></footer>
     </div>
   );
 }

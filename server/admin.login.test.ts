@@ -5,6 +5,7 @@ import type { TrpcContext } from "./_core/context";
 const cookies: Array<{ name: string; options: Record<string, unknown> }> = [];
 const ctx: TrpcContext = {
   user: null,
+  adminSession: null,
   req: { protocol: "https", headers: {} } as TrpcContext["req"],
   res: {
     cookie: (name: string, _value: string, options: Record<string, unknown>) => cookies.push({ name, options }),
@@ -19,7 +20,7 @@ describe("admin.login", () => {
       password: process.env.PULCHERRIMA_ADMIN_PASSWORD ?? "",
     });
 
-    expect(result).toEqual({ success: true });
+    expect(result).toMatchObject({ success: true, role: "owner" });
     expect(cookies[0]).toMatchObject({ name: "pulcherrima_admin_session", options: { httpOnly: true, maxAge: 8 * 60 * 60 * 1000 } });
   });
 

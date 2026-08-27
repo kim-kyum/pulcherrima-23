@@ -43,3 +43,13 @@ export const adminProcedure = t.procedure.use(
     });
   }),
 );
+
+export const ownerProcedure = t.procedure.use(
+  t.middleware(async opts => {
+    const { ctx, next } = opts;
+    if (!ctx.user || ctx.user.role !== "admin" || ctx.adminSession?.role !== "owner") {
+      throw new TRPCError({ code: "FORBIDDEN", message: "총괄관리자 권한이 필요합니다." });
+    }
+    return next({ ctx: { ...ctx, user: ctx.user, adminSession: ctx.adminSession } });
+  }),
+);
