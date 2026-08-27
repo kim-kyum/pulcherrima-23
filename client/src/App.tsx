@@ -9,6 +9,7 @@ import NotFound from "@/pages/NotFound";
 import Archive from "@/pages/Archive";
 import Home from "@/pages/Home";
 import Recruiting from "@/pages/Recruiting";
+import Videos from "@/pages/Videos";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -19,6 +20,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/archive" component={Archive} />
       <Route path="/recruiting" component={Recruiting} />
+      <Route path="/videos" component={Videos} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

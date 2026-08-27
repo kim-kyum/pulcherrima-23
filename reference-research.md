@@ -31,3 +31,23 @@
 ## 잠정 선정
 
 Pulcherrima에는 **토스 디자이너 채용 페이지의 모집 정보 구조와 검정·흰색 중심의 첫 인상**을 주된 레퍼런스로 선택한다. 애플에서 보이는 한 메시지 단위의 큰 섹션 전개만 보조적으로 적용한다. 이유는 이 프로젝트의 목적이 브랜드 소개이면서도 23기 모집 안내를 명확히 전달하는 것이기 때문이다.
+
+## Pulcherrima YouTube 채널 확인
+
+브라우저에서 [Pulcherrima YouTube 채널 Videos](https://www.youtube.com/channel/UCplIsa1QW2a_eQcvtJAymXw/videos)를 직접 확인했다. 채널은 `@pulcherrima2367`, 구독자 59명, 영상 10개로 표시되었다.
+
+홈 대표 영상으로 사용할 영상은 **「2023 경기북과학고등학교 Pulcherrima 홍보영상」**이며, 확인 당시 조회수 4.2K로 채널 내에서 가장 높은 수치였다. 영상 주소는 `https://www.youtube.com/watch?v=oxCAIxOCvL8`이고 썸네일은 `https://i.ytimg.com/vi/oxCAIxOCvL8/hqdefault.jpg`이다.
+
+확인된 개별 영상 링크는 다음과 같다.
+
+| 제목 | 영상 주소 | 확인된 조회수 |
+|---|---|---:|
+| [2024 Pulcherrima 과학동아리발표회 부스 홍보영상] | https://www.youtube.com/watch?v=sk-etZM7EqQ | 173 |
+| [2024 PULCHERRIMA] 동아리 소개 영상 | https://www.youtube.com/watch?v=hqkLYB7H0sE | 247 |
+| [2023 Pulcherrima 과학동아리 학술발표회] 풀체리마 부스 뭐 해요? | https://www.youtube.com/watch?v=0qf_fXZ-Sb0 | 404 |
+| [2023 Pulcherrima 과학동아리 학술발표회] 아니 그래서 풀체리마 뭐 하는 동아리에요? | https://www.youtube.com/watch?v=uUaVF_6sLoI | 303 |
+| 2023 경기북과학고등학교 Pulcherrima 홍보영상 | https://www.youtube.com/watch?v=oxCAIxOCvL8 | 4.2K |
+| [경기북과학고 천문동아리 Pulcherrima] 풀체리마 소개영상 2022 | https://www.youtube.com/watch?v=6jxOhJ7LToQ | 1.2K |
+| [경기북과학고 천문동아리 Pulcherrima] 2020 활동 돌아보기 | https://www.youtube.com/watch?v=1r0Wan3ns6Q | 918 |
+| [경기북과학고 천문동아리 Pulcherrima] 풀체리마 소개영상 2020 | https://www.youtube.com/watch?v=cNuInvHCMTE | 936 |
+| [경기북과학고 천문동아리 Pulcherrima] 동아리 소개 및 2020 돌아보기 - 통합본 | https://www.youtube.com/watch?v=bgZE82axgzY | 1.6K |

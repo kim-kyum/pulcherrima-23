@@ -1,7 +1,8 @@
 /*
- * Official Pulcherrima site header
- * Use the complete supplied wordmark as the only primary brand mark. The header stays
- * fixed in place, becomes translucent after scrolling, and hides only while scrolling down.
+ * Pulcherrima official header
+ * The supplied full logo is the only primary brand mark. The header stays fixed in place,
+ * turns translucent after a little scroll, and hides while scrolling down. The mobile
+ * drawer contains real routes instead of acting as a decorative X toggle.
  */
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
@@ -10,9 +11,10 @@ import { Link, useLocation } from "wouter";
 const LOGO_SRC = "/manus-storage/pulcherrima-wordmark_a46d3471.png";
 
 const items = [
-  { href: "/", label: "소개", en: "ABOUT" },
-  { href: "/archive", label: "활동기록소", en: "ARCHIVE" },
-  { href: "/recruiting", label: "모집", en: "JOIN 23" },
+  { href: "/", label: "소개" },
+  { href: "/archive", label: "활동기록소" },
+  { href: "/videos", label: "영상" },
+  { href: "/recruiting", label: "23기 모집" },
 ];
 
 export default function SiteHeader() {
@@ -25,7 +27,7 @@ export default function SiteHeader() {
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
-      setScrolled(y > 36);
+      setScrolled(y > 32);
       if (y > 110 && y > lastY.current + 8) setHidden(true);
       if (y < lastY.current - 8 || y < 40) setHidden(false);
       lastY.current = y;
@@ -37,6 +39,7 @@ export default function SiteHeader() {
   useEffect(() => {
     setMenuOpen(false);
     setHidden(false);
+    window.scrollTo({ top: 0, behavior: "auto" });
   }, [location]);
 
   return (
@@ -48,14 +51,13 @@ export default function SiteHeader() {
       <nav className="desktop-nav" aria-label="주요 메뉴">
         {items.map((item) => (
           <Link key={item.href} href={item.href} className={location === item.href ? "is-active" : ""}>
-            <span>{item.label}</span>
-            <small>{item.en}</small>
+            {item.label}
           </Link>
         ))}
       </nav>
 
       <Link className="header-cta" href="/recruiting">
-        23기 지원 안내 <ArrowUpRight size={16} strokeWidth={1.7} />
+        23기 모집 <ArrowUpRight size={16} strokeWidth={1.7} />
       </Link>
 
       <button
@@ -68,11 +70,10 @@ export default function SiteHeader() {
         {menuOpen ? <X size={21} /> : <Menu size={21} />}
       </button>
 
-      <div className={`mobile-menu ${menuOpen ? "is-open" : ""}`}>
+      <div className={`mobile-menu ${menuOpen ? "is-open" : ""}`} aria-hidden={!menuOpen}>
         {items.map((item) => (
           <Link key={item.href} href={item.href} className={location === item.href ? "is-active" : ""}>
             <span>{item.label}</span>
-            <small>{item.en}</small>
             <ArrowUpRight size={16} />
           </Link>
         ))}
