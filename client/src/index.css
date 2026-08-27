@@ -1108,3 +1108,102 @@ body { background: #000; color: #fff; }
 .hero-screen-controls { justify-content: flex-start; }.hero-screen-image img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(.86) contrast(1.04); }.hero-screen-media { min-height: clamp(19rem, 42vh, 31rem); }
 .hero-scroll-button { position: fixed; right: clamp(1.25rem, 4vw, 4rem); bottom: clamp(1.25rem, 4vw, 3.5rem); z-index: 60; width: 3.2rem; height: 3.2rem; background: #000; box-shadow: 0 0 0 1px rgba(255,255,255,.22); }
 @media (max-width: 800px) { .hero-screen-media { min-height: 14rem; }.hero-scroll-button { right: 1.1rem; bottom: 1.1rem; width: 2.8rem; height: 2.8rem; } }
+
+/* Reliable mobile menu state: the header owns the open class and the panel stays above page content. */
+@media (max-width: 800px) {
+  .site-header { z-index: 100; overflow: visible; }
+  .site-header.menu-is-open { background: #000 !important; }
+  .site-header.menu-is-open .mobile-menu { display: grid !important; visibility: visible; opacity: 1; pointer-events: auto; position: absolute; z-index: 110; top: 4.6rem; right: 1.1rem; left: 1.1rem; max-height: calc(100svh - 5.6rem); padding: .4rem 1rem; overflow-y: auto; border: 1px solid rgba(255,255,255,.35); background: #000; transform: translateY(0); }
+  .site-header:not(.menu-is-open) .mobile-menu { visibility: hidden; pointer-events: none; }
+  .site-header.menu-is-open .menu-toggle { position: relative; z-index: 120; }
+}
+
+/* Semester archive controls and the longer Korean word spacing requested for the masthead. */
+.archive-intro h1 { letter-spacing: -.045em; }.archive-intro h1 span { letter-spacing: .075em; white-space: nowrap; }
+.archive-pagination { display: flex; align-items: center; justify-content: space-between; margin: 0 var(--site-padding); padding: 1.6rem 0 2.1rem; border-top: 1px solid rgba(255,255,255,.2); }.archive-pagination > span { color: rgba(255,255,255,.55); font-family: var(--sans); font-size: .74rem; }.archive-pagination > div { display: flex; gap: .45rem; }.archive-pagination button { display: grid; place-items: center; width: 2.4rem; height: 2.4rem; color: rgba(255,255,255,.7); background: transparent; border: 1px solid rgba(255,255,255,.3); font-family: var(--number); font-size: .8rem; font-variant-numeric: tabular-nums; transition: color 160ms ease, background 160ms ease, border-color 160ms ease; }.archive-pagination button:hover, .archive-pagination button:focus-visible, .archive-pagination button.is-active { color: #000; background: var(--telescope-yellow); border-color: var(--telescope-yellow); }.archive-empty-state { min-height: 18rem; margin: 0 var(--site-padding); padding: 3.5rem 0; border-top: 1px solid rgba(255,255,255,.2); }.archive-empty-state > span { color: var(--telescope-yellow); font-family: var(--number); font-size: .75rem; }.archive-empty-state h2 { margin: 1.3rem 0 .8rem; color: #fff; font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 4.4rem); font-weight: 500; line-height: 1; }.archive-empty-state p { max-width: 26rem; color: rgba(255,255,255,.64); font-size: .86rem; line-height: 1.8; }
+@media (max-width: 800px) { .archive-intro h1 span { letter-spacing: .045em; white-space: normal; }.archive-pagination { margin: 0 1.1rem 0 2.2rem; }.archive-empty-state { margin: 0 1.1rem 0 2.2rem; } }
+
+/* Let the archive masthead wrap naturally instead of colliding with its description. */
+.archive-intro h1 span { white-space: normal; word-break: keep-all; letter-spacing: .035em; }.archive-intro .page-intro-grid > div { min-width: 0; }.archive-intro .page-intro-copy { position: relative; z-index: 1; max-width: 24rem; }
+@media (max-width: 800px) { .archive-intro h1 span { letter-spacing: .025em; } }
+
+/* Global title scale: less display pressure, more readable word spacing. */
+.hero-screen-copy h1 { max-width: 58rem; font-size: clamp(3rem, 6.8vw, 6.8rem) !important; line-height: .98; letter-spacing: -.045em !important; word-break: keep-all; }
+.page-intro h1 { max-width: 42rem; font-size: clamp(3rem, 5.4vw, 5.8rem) !important; line-height: 1.02; letter-spacing: -.035em !important; word-break: keep-all; }
+.page-intro h1 span { letter-spacing: .015em; white-space: normal; }
+.archive-entry-body h2 { font-size: clamp(1.8rem, 3.2vw, 3.1rem) !important; line-height: 1.05; letter-spacing: -.015em !important; word-break: keep-all; }
+.official-about h2, .official-next h2, .notice-body h2, .fit-grid h2 { font-size: clamp(2.6rem, 5.1vw, 5.4rem) !important; line-height: 1.02; letter-spacing: -.04em !important; word-break: keep-all; }
+.flow-row h3 { font-size: clamp(1.35rem, 2.1vw, 2.25rem) !important; letter-spacing: -.02em; word-break: keep-all; }
+.archive-intro .page-intro-grid > div { max-width: 44rem; min-width: 0; }.archive-intro .page-intro-copy { max-width: 22rem; }.archive-intro h1 span { letter-spacing: .04em; }
+@media (max-width: 800px) {
+  .hero-screen-copy h1 { max-width: 22rem; font-size: clamp(2.75rem, 12vw, 4.7rem) !important; line-height: .99; letter-spacing: -.055em !important; }
+  .page-intro h1 { font-size: clamp(2.65rem, 11vw, 4.35rem) !important; line-height: 1.03; letter-spacing: -.04em !important; }
+  .page-intro h1 span { letter-spacing: .015em; }.archive-entry-body h2 { font-size: clamp(1.8rem, 9vw, 2.7rem) !important; letter-spacing: -.02em !important; }
+  .official-about h2, .official-next h2, .notice-body h2, .fit-grid h2 { font-size: clamp(2.3rem, 10.5vw, 4rem) !important; letter-spacing: -.05em !important; }
+}
+
+/* Final public scale: titles should introduce each page, not occupy the whole page. */
+.hero-screen-copy h1 { max-width: 62rem; font-size: clamp(2.45rem, 4.65vw, 4.95rem) !important; line-height: 1.04; letter-spacing: -.025em !important; }
+.page-intro h1 { max-width: 52rem; font-size: clamp(2.55rem, 4.25vw, 4.7rem) !important; line-height: 1.06; letter-spacing: -.018em !important; }
+.page-intro h1 span { letter-spacing: .025em; }.archive-entry-body h2 { font-size: clamp(1.7rem, 2.55vw, 2.55rem) !important; line-height: 1.1; letter-spacing: 0 !important; }.notice-body h2, .fit-grid h2 { font-size: clamp(2.15rem, 4vw, 4.25rem) !important; line-height: 1.06; letter-spacing: -.02em !important; }.flow-row h3 { font-size: clamp(1.3rem, 1.8vw, 1.9rem) !important; letter-spacing: 0; }
+@media (max-width: 800px) {
+  .hero-screen-copy h1 { max-width: 21rem; font-size: clamp(2.35rem, 10vw, 3.65rem) !important; line-height: 1.05; letter-spacing: -.035em !important; }
+  .page-intro h1 { max-width: 22rem; font-size: clamp(2.35rem, 9.5vw, 3.65rem) !important; line-height: 1.07; letter-spacing: -.025em !important; }
+  .page-intro h1 span { letter-spacing: .02em; }.notice-body h2, .fit-grid h2 { font-size: clamp(2.1rem, 9vw, 3.4rem) !important; letter-spacing: -.03em !important; }
+}
+
+/* Readability pass: keep the title voice, reduce visual dominance across public pages. */
+.hero-screen-copy h1 { font-size: clamp(2.1rem, 3.55vw, 3.85rem) !important; line-height: 1.08; max-width: 54rem; }
+.page-intro h1 { font-size: clamp(2.2rem, 3.25vw, 3.75rem) !important; line-height: 1.1; max-width: 46rem; }
+.archive-entry-body h2 { font-size: clamp(1.55rem, 2.05vw, 2.15rem) !important; line-height: 1.16; }
+.notice-body h2, .fit-grid h2 { font-size: clamp(1.95rem, 3.15vw, 3.35rem) !important; line-height: 1.1; }
+.flow-row h3 { font-size: clamp(1.18rem, 1.55vw, 1.55rem) !important; line-height: 1.2; }
+@media (max-width: 800px) {
+  .hero-screen-copy h1 { font-size: clamp(2rem, 8.6vw, 3.05rem) !important; max-width: 19rem; line-height: 1.1; }
+  .page-intro h1 { font-size: clamp(2.05rem, 8.4vw, 3.05rem) !important; max-width: 20rem; line-height: 1.1; }
+  .notice-body h2, .fit-grid h2 { font-size: clamp(1.8rem, 8vw, 2.85rem) !important; }
+}
+
+/* Vertical reading order: every title leads, its media and supporting copy follows below. */
+.hero-screen-layout { display: block !important; }
+.hero-screen-layout .hero-screen-copy { width: 100%; max-width: 68rem; padding-bottom: 0; }
+.hero-screen-layout.has-media .hero-screen-copy { flex: none; padding-bottom: 0; }
+.hero-screen-media { display: block; width: min(84vw, 68rem); max-width: none; margin-top: clamp(1.75rem, 3vw, 3.5rem); }
+.hero-screen-layout.has-media .hero-screen-media { flex: none; }
+.hero-screen-controls { margin-top: clamp(1.5rem, 3vw, 3rem); }
+.page-intro-grid { display: block !important; }
+.page-intro-grid .page-intro-copy { max-width: 40rem; margin-top: clamp(1.5rem, 3vw, 3rem); }
+@media (max-width: 800px) {
+  .hero-screen-media { width: 100%; margin-top: 1.35rem; }
+  .hero-screen-controls { margin-top: 1.25rem; }
+  .page-intro-grid .page-intro-copy { margin-top: 1.25rem; }
+}
+
+/* One-line first on desktop: no editorial title breaks unless the viewport truly requires one. */
+@media (min-width: 801px) {
+  .hero-screen-copy h1, .page-intro h1, .notice-body h2, .fit-grid h2, .archive-empty-state h2, .archive-entry-body h2 { white-space: nowrap; word-break: normal; max-width: none; }
+  .archive-intro h1 { font-size: clamp(1.9rem, 2.7vw, 3.25rem) !important; }
+}
+@media (max-width: 800px) {
+  .hero-screen-copy h1, .page-intro h1, .notice-body h2, .fit-grid h2, .archive-empty-state h2, .archive-entry-body h2 { white-space: normal; }
+}
+
+/* Responsive hero finish: desktop advances by viewport-sized chapters; mobile follows content height. */
+.hero-screen-track { scroll-behavior: smooth; }
+.hero-scroll-button { will-change: transform; }
+@media (min-width: 801px) {
+  .hero-screen { min-height: calc(100svh - 82px); }
+}
+@media (max-width: 800px) {
+  .hero-screen { min-height: auto; padding-top: 1.4rem; padding-bottom: 4.5rem; }
+  .hero-screen-copy { padding-top: 1.4rem; padding-bottom: 0; }
+  .hero-screen-layout.has-media .hero-screen-copy { padding-bottom: 0; }
+  .hero-screen-media { min-height: 0; margin-top: 1.5rem; }
+  .hero-screen-controls { margin-top: 1.4rem; padding-bottom: 0; }
+}
+
+/* Keep scroll targets below the fixed header, including the initial mobile viewport. */
+.hero-screen { scroll-margin-top: 5.25rem; }
+@media (max-width: 800px) {
+  .hero-screen { scroll-margin-top: 4.6rem; padding-top: 4.6rem; }
+}

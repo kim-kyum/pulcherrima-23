@@ -43,7 +43,7 @@ export default function SiteHeader() {
   }, [location]);
 
   return (
-    <header className={`site-header ${scrolled ? "is-scrolled" : ""} ${hidden ? "is-hidden" : ""}`}>
+    <header className={`site-header ${scrolled ? "is-scrolled" : ""} ${hidden ? "is-hidden" : ""} ${menuOpen ? "menu-is-open" : ""}`}>
       <Link href="/" className="full-logo-link" aria-label="Pulcherrima 공식 사이트 홈">
         <img className="full-logo" src={LOGO_SRC} alt="PULCHERRIMA" />
       </Link>
@@ -65,12 +65,13 @@ export default function SiteHeader() {
         type="button"
         aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"}
         aria-expanded={menuOpen}
+        aria-controls="site-mobile-menu"
         onClick={() => setMenuOpen((open) => !open)}
       >
         {menuOpen ? <X size={21} /> : <Menu size={21} />}
       </button>
 
-      <div className={`mobile-menu ${menuOpen ? "is-open" : ""}`} aria-hidden={!menuOpen}>
+      <div id="site-mobile-menu" className={`mobile-menu ${menuOpen ? "is-open" : ""}`} aria-hidden={!menuOpen}>
         {items.map((item) => (
           <Link key={item.href} href={item.href} className={location === item.href ? "is-active" : ""}>
             <span>{item.label}</span>

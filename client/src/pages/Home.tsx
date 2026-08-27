@@ -7,6 +7,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { ArrowDown, ArrowUpRight, ExternalLink, Play } from "lucide-react";
 import { Link } from "wouter";
 import SiteHeader from "@/components/SiteHeader";
+import { getNextScreenIndex } from "@/lib/heroNavigation";
 
 type RevealProps = { children: ReactNode; className?: string; delay?: number };
 
@@ -45,13 +46,17 @@ const heroScreens = [
 export default function Home() {
   const heroTrackRef = useRef<HTMLDivElement | null>(null);
   const [activeScreen, setActiveScreen] = useState(0);
+  const scrollLockRef = useRef(false);
 
   useEffect(() => {
     const track = heroTrackRef.current;
     if (!track) return;
     const screens = Array.from(track.querySelectorAll<HTMLElement>(".hero-screen"));
     const observer = new IntersectionObserver((entries) => {
-      const visible = entries.find((entry) => entry.isIntersecting);
+      if (scrollLockRef.current) return;
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
       if (visible) setActiveScreen(screens.indexOf(visible.target as HTMLElement));
     }, { rootMargin: "-35% 0px -55% 0px", threshold: 0 });
     screens.forEach((screen) => observer.observe(screen));
@@ -59,11 +64,17 @@ export default function Home() {
   }, []);
 
   const goToNextScreen = () => {
-    const nextIndex = Math.min(activeScreen + 1, heroScreens.length - 1);
+    if (scrollLockRef.current) return;
+    const nextIndex = getNextScreenIndex(activeScreen, heroScreens.length);
     const target = heroTrackRef.current?.querySelector<HTMLElement>(`.hero-screen:nth-child(${nextIndex + 1})`);
     if (!target) return;
-    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 82, behavior: "smooth" });
+
+    scrollLockRef.current = true;
     setActiveScreen(nextIndex);
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.setTimeout(() => {
+      scrollLockRef.current = false;
+    }, 700);
   };
 
   return (
@@ -81,7 +92,7 @@ export default function Home() {
                   <div className="hero-screen-copy">
                     <p className="section-kicker">GBS 천체 관측 동아리 PULCHERRIMA</p>
                     <h1 id={`hero-screen-${screen.no}`}>{screen.line}</h1>
-                    {screen.kind === "intro" && <div className="hero-intro-description"><p>풀체리마는 GBS 학생들이 망원경으로 천체를 관측하는 동아리입니다. 관측할 대상을 정하고, 장비를 준비하고, 보이는 것을 기록합니다.</p><p>하늘이 흐린 날에는 다음 관측을 준비합니다. 활동은 관측이 가능한 날과 다음 질문을 정하는 시간까지 이어집니다.</p></div>}
+                    {screen.kind === "intro" && <div className="hero-intro-description"><p>망원경을 세우고 오늘의 대상을 고릅니다. 보이는 것을 기록하고, 다음 관측을 준비합니다.</p></div>}
                   </div>
                   {screen.kind === "video" && <div className="hero-screen-media"><iframe src={`https://www.youtube.com/embed/${screen.video.id}?rel=0`} title={screen.video.title} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen /></div>}
                   {screen.kind === "image" && <div className="hero-screen-media hero-screen-image"><img src={screen.image} alt="별이 가득한 밤하늘" /></div>}

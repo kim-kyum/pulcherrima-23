@@ -17,7 +17,7 @@ export default function Recruiting() {
           <div className="recruiting-title-row">
             <div>
               <p className="section-kicker">풀체리마 23기 모집</p>
-              <h1>다음 관측을<br /><span>같이 준비합니다.</span></h1>
+              <h1>다음 관측을 <span>같이 준비합니다.</span></h1>
             </div>
             <p className="page-intro-copy">지원에 필요한 내용을 따로 정리합니다. 모집 일정과 방법은 이곳과 GBS 학교 공지에서 확인할 수 있습니다.</p>
           </div>
@@ -26,7 +26,7 @@ export default function Recruiting() {
         <section className="recruiting-notice" aria-labelledby="notice-title">
           <div className="notice-label"><span>모집 안내</span><span>23기 / 2027</span></div>
           <div className="notice-body">
-            <h2 id="notice-title">지금은 다음 공지를<br /><span>기다리는 시간입니다.</span></h2>
+            <h2 id="notice-title">지금은 다음 공지를 <span>기다리는 시간입니다.</span></h2>
             <div className="notice-copy">
               <p>지원 일정과 방법은 확정 후 GBS 학교 공지와 풀체리마 공식 채널을 통해 안내합니다. 궁금한 점은 메일로 남겨주세요.</p>
               <a className="button button-yellow" href="mailto:recruit@pulcherrima.site?subject=Pulcherrima%2023%EA%B8%B0%20지원%20문의">지원 문의 보내기 <Mail size={17} /></a>
@@ -37,7 +37,7 @@ export default function Recruiting() {
         <section className="recruiting-fit">
           <div className="section-topline"><span>01</span><span>지원 안내</span></div>
           <div className="fit-grid">
-            <h2>별을 잘 몰라도<br /><span>괜찮습니다.</span></h2>
+            <h2>별을 잘 몰라도 <span>괜찮습니다.</span></h2>
             <ul>
               <li><Check size={18} /> 직접 보고 확인하는 것을 좋아하는 사람</li>
               <li><Check size={18} /> 모르는 것을 질문하고 함께 배우는 사람</li>
