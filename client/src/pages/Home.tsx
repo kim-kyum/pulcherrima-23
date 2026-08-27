@@ -35,7 +35,7 @@ const featuredVideo = {
   duration: "1:20",
 };
 
-const heroLines = ["학교의 가장 높은 곳,", "학교의 가장 어두운 곳에서,", "가장 밝게 빛납니다."];
+const heroLines = ["학교의 가장 높은 곳,", "학교의 가장 어두운 곳에서,", "가장 밝게 빛난다."];
 
 function HeroStatement() {
   const [activeLine, setActiveLine] = useState(0);
@@ -72,7 +72,7 @@ export default function Home() {
             <Reveal>
               <p className="section-kicker">GBS 천체 관측 동아리 PULCHERRIMA</p>
               <HeroStatement />
-              <p className="official-hero-description">학교의 밤을 관측하고, 지난 활동과 영상을 기록하는 동아리.<br />다음 관측을 위한 질문을 준비.</p>
+              <p className="official-hero-description">학교의 밤을 관측하고, 지난 활동과 영상을 기록하는 동아리다.<br />다음 관측을 위한 질문을 준비한다.</p>
               <div className="hero-actions">
                 <Link className="button button-yellow" href="/videos">홍보 영상 보기 <Play size={16} fill="currentColor" /></Link>
                 <Link className="text-link text-link-light" href="/archive">활동기록소 <ArrowUpRight size={16} /></Link>
@@ -87,11 +87,11 @@ export default function Home() {
           <div className="official-about-grid">
             <Reveal>
               <p className="section-kicker">PULCHERRIMA</p>
-              <h2 id="about-title">밤이 맑으면<br /><span>옥상으로 올라갑니다.</span></h2>
+              <h2 id="about-title">밤이 맑으면<br /><span>옥상으로 올라간다.</span></h2>
             </Reveal>
             <Reveal delay={80} className="official-about-copy">
-              <p>풀체리마는 GBS 학생들이 망원경으로 천체를 관측하는 동아리. 관측할 대상을 정하고, 장비를 준비하고, 보이는 것을 기록.</p>
-              <p>하늘이 흐린 날에는 다음 관측을 준비. 활동은 관측이 가능한 날과 다음 질문을 정하는 시간까지 이어짐.</p>
+              <p>풀체리마는 GBS 학생들이 망원경으로 천체를 관측하는 동아리다. 관측할 대상을 정하고, 장비를 준비하고, 보이는 것을 기록한다.</p>
+              <p>하늘이 흐린 날에는 다음 관측을 준비한다. 활동은 관측이 가능한 날과 다음 질문을 정하는 시간까지 이어진다.</p>
               <div className="principles-line"><span>관측</span><span>기록</span><span>공유</span></div>
             </Reveal>
           </div>
@@ -109,8 +109,8 @@ export default function Home() {
             </Reveal>
             <Reveal delay={90} className="official-activity-copy">
               <p className="section-kicker">2023년 19기 모집 영상</p>
-              <h2 id="activities-title">풀체리마를<br /><span>영상으로 먼저 보기.</span></h2>
-              <p>2023년 경기북과학고등학교 Pulcherrima 홍보영상. 이 페이지에서 바로 재생.</p>
+              <h2 id="activities-title">풀체리마를<br /><span>영상으로 먼저 본다.</span></h2>
+              <p>2023년 경기북과학고등학교 Pulcherrima 홍보영상이다. 이 페이지에서 바로 재생한다.</p>
               <Link className="text-link text-link-light" href="/videos">다른 영상 보기 <ArrowUpRight size={15} /></Link>
             </Reveal>
           </div>
@@ -119,8 +119,8 @@ export default function Home() {
         <section className="official-next" aria-labelledby="next-title">
           <div className="section-topline"><span>03</span><span>다음으로</span></div>
           <div className="official-next-inner">
-            <Reveal><p className="section-kicker">풀체리마 온라인 기록</p><h2 id="next-title">활동을 보고,<br /><span>기록을 읽기.</span></h2></Reveal>
-            <Reveal delay={80} className="official-next-actions"><p>지난 영상은 영상 목록에서, 관측과 준비의 기록은 활동기록소에서 확인.</p><Link className="button button-white" href="/archive">활동기록소 <ArrowUpRight size={17} /></Link><Link className="button button-outline-light" href="/videos">영상 목록 <ArrowUpRight size={16} /></Link></Reveal>
+            <Reveal><p className="section-kicker">풀체리마 온라인 기록</p><h2 id="next-title">활동을 보고,<br /><span>기록을 읽는다.</span></h2></Reveal>
+            <Reveal delay={80} className="official-next-actions"><p>지난 영상은 영상 목록에서, 관측과 준비의 기록은 활동기록소에서 확인한다.</p><Link className="button button-white" href="/archive">활동기록소 <ArrowUpRight size={17} /></Link><Link className="button button-outline-light" href="/videos">영상 목록 <ArrowUpRight size={16} /></Link></Reveal>
           </div>
         </section>
       </main>

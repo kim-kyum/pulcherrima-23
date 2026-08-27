@@ -8,9 +8,9 @@ import { Link } from "wouter";
 import SiteHeader from "@/components/SiteHeader";
 
 const entries = [
-  { no: "01", date: "2026. 08", type: "관측 기록", title: "여름 은하수 지도", excerpt: "학교 옥상에서 보이는 별을 하나씩 이어 다음 관측을 위한 지도로 남긴 기록.", image: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=1100&q=88" },
-  { no: "02", date: "2026. 05", type: "현장 기록", title: "초점을 맞추는 동안", excerpt: "망원경을 처음 조립한 날. 오래 걸려도 같은 대상을 함께 확인한 기록.", image: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=1100&q=88" },
-  { no: "03", date: "2026. 03", type: "동아리 기록", title: "첫 관측을 위한 준비", excerpt: "관측 전 체크리스트와 장비를 정리하며 다음 질문을 고른 기록.", image: "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1100&q=88" },
+  { no: "01", date: "2026. 08", type: "관측 기록", title: "여름 은하수 지도", excerpt: "학교 옥상에서 보이는 별을 하나씩 이어 다음 관측을 위한 지도로 남긴 기록이다.", image: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=1100&q=88" },
+  { no: "02", date: "2026. 05", type: "현장 기록", title: "초점을 맞추는 동안", excerpt: "망원경을 처음 조립한 날이다. 오래 걸려도 같은 대상을 함께 확인한 기록이다.", image: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=1100&q=88" },
+  { no: "03", date: "2026. 03", type: "동아리 기록", title: "첫 관측을 위한 준비", excerpt: "관측 전 체크리스트와 장비를 정리하며 다음 질문을 고른 기록이다.", image: "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1100&q=88" },
 ];
 
 export default function Archive() {
@@ -23,9 +23,9 @@ export default function Archive() {
           <div className="page-intro-grid">
             <div>
               <p className="section-kicker">풀체리마 활동기록소</p>
-              <h1>우리가 본 것을<br /><span>남겨두는 곳.</span></h1>
+              <h1>우리가 본 것을<br /><span>남겨두는 곳이다.</span></h1>
             </div>
-            <p className="page-intro-copy">관측이 끝난 뒤의 기록, 준비하는 동안의 질문, 함께 보낸 밤의 흔적. 풀체리마의 활동기록소.</p>
+            <p className="page-intro-copy">관측이 끝난 뒤의 기록과 준비하는 동안의 질문, 함께 보낸 밤의 흔적을 남긴다. 여기는 풀체리마의 활동기록소다.</p>
           </div>
         </section>
 
@@ -47,7 +47,7 @@ export default function Archive() {
         </section>
 
         <section className="archive-next">
-          <div><CalendarDays size={18} /><span>다음 기록은 맑은 밤을 기다리는 중.</span></div>
+          <div><CalendarDays size={18} /><span>다음 기록은 맑은 밤을 기다리는 중이다.</span></div>
           <Link href="/recruiting">다음 기록에 합류하기 <ArrowUpRight size={16} /></Link>
         </section>
       </main>

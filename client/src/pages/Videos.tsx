@@ -31,8 +31,8 @@ export default function Videos() {
         <section className="page-intro videos-intro">
           <div className="page-intro-meta"><span>GBS / 풀체리마</span><span>영상 기록 / 2020—</span></div>
           <div className="page-intro-grid">
-            <div><p className="section-kicker">풀체리마 유튜브</p><h1>영상으로<br /><span>먼저 만나요.</span></h1></div>
-            <p className="page-intro-copy">동아리 소개, 학술발표회, 활동 돌아보기. 풀체리마 채널의 영상 기록. 목록에서 영상을 고르면 이 페이지에서 바로 재생.</p>
+            <div><p className="section-kicker">풀체리마 유튜브</p><h1>영상으로<br /><span>먼저 만난다.</span></h1></div>
+            <p className="page-intro-copy">동아리 소개, 학술발표회, 활동 돌아보기를 담은 풀체리마 채널의 영상 기록이다. 목록에서 영상을 고르면 이 페이지에서 바로 재생한다.</p>
           </div>
         </section>
 
