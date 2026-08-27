@@ -1102,3 +1102,9 @@ body { background: #000; color: #fff; }
 @media (max-width: 800px) {
   .hero-screen { min-height: calc(100svh - 56px); padding-top: 1.6rem; padding-bottom: 1.4rem; }.hero-screen-copy h1 { font-size: clamp(3rem, 14vw, 5.2rem); }.hero-screen-layout.has-media .hero-screen-copy { padding-bottom: 1rem; }.hero-screen-media { width: 100%; max-width: none; }.hero-screen-cta { gap: .75rem; }.hero-screen-controls { align-items: flex-end; }.hero-screen-cta .text-link { font-size: .78rem; }.hero-scroll-button { width: 2.5rem; height: 2.5rem; }
 }
+
+/* One persistent control advances through the three screen-sized hero sections. */
+.hero-screen-track { position: relative; }
+.hero-screen-controls { justify-content: flex-start; }.hero-screen-image img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(.86) contrast(1.04); }.hero-screen-media { min-height: clamp(19rem, 42vh, 31rem); }
+.hero-scroll-button { position: fixed; right: clamp(1.25rem, 4vw, 4rem); bottom: clamp(1.25rem, 4vw, 3.5rem); z-index: 60; width: 3.2rem; height: 3.2rem; background: #000; box-shadow: 0 0 0 1px rgba(255,255,255,.22); }
+@media (max-width: 800px) { .hero-screen-media { min-height: 14rem; }.hero-scroll-button { right: 1.1rem; bottom: 1.1rem; width: 2.8rem; height: 2.8rem; } }
