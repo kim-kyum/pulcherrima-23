@@ -14,6 +14,8 @@ export default function Recruiting() {
   const managed = useMemo(() => { try { return managedContent.data ? JSON.parse(managedContent.data.contentValue) as Record<string, string> : {}; } catch { return {}; } }, [managedContent.data]);
   const generation = managed.generation ?? "23기";
   const year = managed.year ?? "2027";
+  const contactEmail = managed.contactEmail ?? "recruit@pulcherrima.site";
+  const applyUrl = managed.applyUrl || `mailto:${contactEmail}?subject=${encodeURIComponent(`Pulcherrima ${generation} 지원 문의`)}`;
   return (
     <div className="inner-page recruiting-page">
       <SiteHeader />
@@ -35,7 +37,7 @@ export default function Recruiting() {
             <h2 id="notice-title">{managed.noticeTitle ?? "지금은 다음 공지를 기다리는 시간입니다."}</h2>
             <div className="notice-copy">
               <p>{managed.noticeCopy ?? "지원 일정과 방법은 확정 후 GBS 학교 공지와 풀체리마 공식 채널을 통해 안내합니다. 궁금한 점은 메일로 남겨주세요."}</p>
-              <a className="button button-yellow" href="mailto:recruit@pulcherrima.site?subject=Pulcherrima%2023%EA%B8%B0%20지원%20문의">지원 문의 보내기 <Mail size={17} /></a>
+              <a className="button button-yellow" href={applyUrl}>지원 문의 보내기 <Mail size={17} /></a>
             </div>
           </div>
         </section>
@@ -63,7 +65,7 @@ export default function Recruiting() {
 
         <div className="inner-backlink"><Link href="/"><MoveLeft size={16} /> 공식 사이트로 돌아가기</Link><Link href="/archive">활동기록소 보기 <ArrowUpRight size={15} /></Link></div>
       </main>
-      <footer className="site-footer inner-footer"><p>GBS ASTRONOMY CLUB · PULCHERRIMA</p><Link href="mailto:recruit@pulcherrima.site">recruit@pulcherrima.site <ArrowUpRight size={14} /></Link></footer>
+      <footer className="site-footer inner-footer"><p>GBS ASTRONOMY CLUB · PULCHERRIMA</p><Link href={`mailto:${contactEmail}`}>{contactEmail} <ArrowUpRight size={14} /></Link></footer>
     </div>
   );
 }

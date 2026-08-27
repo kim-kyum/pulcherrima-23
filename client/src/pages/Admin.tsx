@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 const defaults = {
   archive: JSON.stringify({ intro: "관측이 끝난 뒤의 기록과 준비하는 동안의 질문을 남깁니다.", entries: [] }, null, 2),
-  recruiting: JSON.stringify({ generation: "23기", year: "2027", title: "다음 관측을 같이 준비합니다.", noticeTitle: "지금은 다음 공지를 기다리는 시간입니다.", noticeCopy: "지원 일정과 방법은 확정 후 GBS 학교 공지와 풀체리마 공식 채널을 통해 안내합니다." }, null, 2),
+  recruiting: JSON.stringify({ generation: "23기", year: "2027", title: "다음 관측을 같이 준비합니다.", noticeTitle: "지금은 다음 공지를 기다리는 시간입니다.", noticeCopy: "지원 일정과 방법은 확정 후 GBS 학교 공지와 풀체리마 공식 채널을 통해 안내합니다.", contactEmail: "recruit@pulcherrima.site", applyUrl: "" }, null, 2),
 };
 
 export default function Admin() {

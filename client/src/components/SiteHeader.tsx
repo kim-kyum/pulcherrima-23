@@ -1,7 +1,7 @@
 /*
  * Pulcherrima official header
  * The supplied full logo is the only primary brand mark. The header stays fixed in place,
- * turns translucent after a little scroll, and hides while scrolling down. The mobile
+ * keeps a solid black background and hides while scrolling down. The mobile
  * drawer contains real routes instead of acting as a decorative X toggle.
  */
 import { useEffect, useRef, useState } from "react";
