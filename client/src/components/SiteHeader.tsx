@@ -15,6 +15,7 @@ const items = [
   { href: "/archive", label: "활동기록소" },
   { href: "/videos", label: "영상" },
   { href: "/recruiting", label: "23기 모집" },
+  { href: "/gallery", label: "회원 사진" },
 ];
 
 export default function SiteHeader() {
