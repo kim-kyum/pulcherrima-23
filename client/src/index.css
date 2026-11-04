@@ -1359,3 +1359,64 @@ body { background: #000; color: #fff; }
 .admin-error { padding: .7rem 0; color: var(--telescope-yellow); line-height: 1.5; }
 .archive-image-placeholder { display: grid; width: 100%; height: 100%; min-height: 11rem; place-content: center; gap: .55rem; color: rgba(255,255,255,.6); background: #090909; font-size: .76rem; text-align: center; }
 @media (max-width: 600px) { .image-upload-field span { font-size: .72rem; } }
+
+/* ---- Member photo library (/gallery) and admin member panel ---- */
+.site-header .mobile-menu.is-open { max-height: 22rem; }
+.gallery-body { max-width: 75rem; margin: 0 auto; padding: 0 var(--site-padding) 6rem; }
+.gallery-muted { color: rgba(255,255,255,.58); }
+.gallery-login { margin: 0 auto; }
+.gallery-login h2 { margin: 0; font-family: var(--sans); font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: -.04em; }
+.gallery-login > p:not(.section-kicker) { color: rgba(255,255,255,.66); font-size: .88rem; line-height: 1.75; word-break: keep-all; }
+.gallery-login form { display: grid; gap: 1rem; margin-top: 1.6rem; }
+.gallery-login label, .gallery-field { display: grid; gap: .45rem; color: rgba(255,255,255,.72); font-size: .8rem; }
+.gallery-login input, .gallery-field textarea, .gallery-queue input { width: 100%; min-width: 0; padding: .72rem .8rem; color: #fff; border: 1px solid rgba(255,255,255,.28); background: #080808; font: .92rem/1.45 var(--sans); }
+.gallery-field textarea { min-height: 4.6rem; resize: vertical; }
+.gallery-primary { padding: .85rem 1rem; color: #000; border: 1px solid var(--telescope-yellow); background: var(--telescope-yellow); font-weight: 700; cursor: pointer; }
+.gallery-primary:disabled, .gallery-ghost:disabled { opacity: .55; cursor: default; }
+.gallery-ghost { display: inline-flex; align-items: center; gap: .35rem; padding: .6rem .8rem; color: #fff; border: 1px solid rgba(255,255,255,.35); background: transparent; cursor: pointer; }
+.gallery-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,.22); }
+.gallery-toolbar strong { font-weight: 700; }
+.gallery-usage { margin: .4rem 0 1.8rem; }
+.gallery-usage p { margin: .55rem 0 0; color: rgba(255,255,255,.6); font-size: .78rem; font-variant-numeric: tabular-nums; }
+.gallery-usage-bar, .gallery-progress { height: .32rem; overflow: hidden; background: rgba(255,255,255,.14); }
+.gallery-usage-bar span, .gallery-progress span { display: block; height: 100%; background: var(--telescope-yellow); transition: width 200ms linear; }
+.gallery-upload { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; margin-bottom: 2.6rem; }
+.gallery-drop { position: relative; display: grid; place-items: center; align-content: center; gap: .5rem; min-height: 9.5rem; padding: 1.2rem; color: #fff; border: 1px dashed rgba(242,195,0,.7); text-align: center; cursor: pointer; }
+.gallery-drop svg { color: var(--telescope-yellow); }
+.gallery-drop span { font-weight: 700; }
+.gallery-drop small { max-width: 26rem; color: rgba(255,255,255,.55); font-size: .7rem; line-height: 1.55; }
+.gallery-drop input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.gallery-queue { grid-column: 1 / -1; display: grid; gap: .6rem; margin: 0; padding: 0; list-style: none; }
+.gallery-queue li { display: grid; gap: .45rem; padding: .75rem; border: 1px solid rgba(255,255,255,.2); }
+.gallery-queue li.is-error small { color: var(--telescope-yellow); }
+.gallery-queue li.is-done { opacity: .7; }
+.gallery-queue-head { display: flex; align-items: center; gap: .6rem; }
+.gallery-queue-head span { flex: none; color: rgba(255,255,255,.6); font-size: .75rem; font-variant-numeric: tabular-nums; }
+.gallery-queue-head button { flex: none; display: grid; place-items: center; width: 2rem; height: 2rem; color: #fff; border: 1px solid rgba(255,255,255,.3); background: transparent; cursor: pointer; }
+.gallery-queue small { color: rgba(255,255,255,.6); font-size: .72rem; }
+.gallery-filter { display: flex; gap: .4rem; margin-bottom: 1.2rem; }
+.gallery-filter button { padding: .5rem .85rem; color: rgba(255,255,255,.72); border: 1px solid rgba(255,255,255,.25); background: transparent; cursor: pointer; }
+.gallery-filter button.is-active { color: #000; border-color: var(--telescope-yellow); background: var(--telescope-yellow); font-weight: 700; }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 1rem; }
+.gallery-card { display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,.22); background: #050505; }
+.gallery-thumb { aspect-ratio: 4 / 3; overflow: hidden; background: #0b0b0b; }
+.gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.gallery-thumb-empty { display: grid; place-content: center; justify-items: center; gap: .4rem; height: 100%; color: rgba(255,255,255,.5); font-family: var(--mono); font-size: .75rem; letter-spacing: .08em; }
+.gallery-card-body { display: grid; gap: .4rem; padding: .85rem; }
+.gallery-card-body h3 { overflow: hidden; margin: 0; font-size: .95rem; text-overflow: ellipsis; white-space: nowrap; }
+.gallery-meta { margin: 0; color: rgba(255,255,255,.55); font-size: .72rem; font-variant-numeric: tabular-nums; }
+.gallery-desc { display: -webkit-box; overflow: hidden; margin: 0; color: rgba(255,255,255,.72); font-size: .78rem; line-height: 1.55; -webkit-box-orient: vertical; -webkit-line-clamp: 3; word-break: keep-all; }
+.gallery-actions { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .3rem; }
+.gallery-actions a, .gallery-actions button { display: inline-flex; align-items: center; gap: .3rem; padding: .42rem .6rem; color: #fff; border: 1px solid rgba(255,255,255,.3); background: transparent; font-size: .74rem; text-decoration: none; cursor: pointer; }
+.gallery-actions a:hover { color: var(--telescope-yellow); border-color: var(--telescope-yellow); }
+.gallery-empty { padding: 3rem 0; text-align: center; }
+.gallery-more { display: flex; margin: 2rem auto 0; }
+.storage-status { display: flex; align-items: flex-start; gap: .55rem; margin: 1rem 0 0; padding: .75rem .85rem; color: rgba(255,255,255,.78); border: 1px solid rgba(255,255,255,.2); font-size: .8rem; line-height: 1.5; }
+.storage-status svg { flex: none; margin-top: .1rem; color: var(--telescope-yellow); }
+.member-form { grid-template-columns: 1fr 1fr 1fr auto; }
+.account-manager .admin-help a { color: var(--telescope-yellow); }
+@media (max-width: 760px) {
+  .gallery-upload { grid-template-columns: 1fr; }
+  .member-form { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); gap: .7rem; }
+}

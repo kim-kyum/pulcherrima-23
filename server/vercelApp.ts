@@ -4,6 +4,7 @@ import { appRouter } from "./routers";
 import { createContext } from "./_core/context";
 import { registerOAuthRoutes } from "./_core/oauth";
 import { registerStorageProxy } from "./_core/storageProxy";
+import { registerPhotoRoutes } from "./photoRoutes";
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use((req, _res, next) => {
 });
 
 registerStorageProxy(app);
+registerPhotoRoutes(app);
 registerOAuthRoutes(app);
 app.use(
   "/api/trpc",
